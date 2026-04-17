@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>LORD AZIZ · BAN TOOL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0c121c;
+      font-family: 'Inter', sans-serif;
+      color: #eef3fc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 16px;
+    }
+
+    .main-container {
+      max-width: 980px;
+      width: 100%;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(15, 30, 50, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid #1e3a5f;
+      border-radius: 40px;
+      padding: 8px 24px 8px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .logo i {
+      color: #3b82f6;
+      font-size: 1.6rem;
+      filter: drop-shadow(0 0 6px #3b82f6);
+    }
+
+    .logo span {
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: -0.3px;
+      color: white;
+    }
+
+    .status {
+      background: rgba(15, 30, 50, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid #1e3a5f;
+      border-radius: 40px;
+      padding: 8px 22px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .status i.fa-circle {
+      font-size: 0.7rem;
+    }
+
+    .status i.fa-bolt {
+      color: #3b82f6;
+      margin-left: 4px;
+    }
+
+    .card {
+      background: rgba(12, 25, 42, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid #1e3a5f;
+      border-radius: 28px;
+      padding: 26px 24px;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.6);
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 2rem;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      color: #d6e6ff;
+    }
+
+    h2 i {
+      color: #3b82f6;
+    }
+
+    .scripts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .script-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid #253c56;
+      border-radius: 22px;
+      padding: 14px 22px;
+      transition: border 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #0a121c;
+    }
+
+    .script-item:hover {
+      border-color: #3b82f6;
+      box-shadow: 0 6px 0 #0a121c, 0 0 15px #3b82f640;
+      transform: translateY(-2px);
+    }
+
+    .script-item:active {
+      animation: clickFlash 0.2s ease-out;
+    }
+
+    @keyframes clickFlash {
+      0% { background: rgba(59, 130, 246, 0.3); box-shadow: 0 4px 0 #0a121c, 0 0 20px #3b82f6; }
+      100% { background: rgba(0, 0, 0, 0.2); box-shadow: 0 4px 0 #0a121c; }
+    }
+
+    .script-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .script-icon {
+      width: 48px;
+      height: 48px;
+      background: #112c44;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3b82f6;
+      font-size: 1.8rem;
+      border: 1px solid #2c5f9a;
+      box-shadow: 0 0 12px #3b82f650;
+      animation: skullPulse 2.5s infinite ease-in-out, eyesGlow 1.8s infinite alternate;
+    }
+
+    @keyframes skullPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 12px #3b82f650; }
+      50% { transform: scale(1.05); box-shadow: 0 0 20px #3b82f6, 0 0 8px #60a5fa; }
+    }
+
+    @keyframes eyesGlow {
+      0% { color: #3b82f6; text-shadow: 0 0 5px #3b82f6; }
+      100% { color: #a0c8ff; text-shadow: 0 0 15px #60a5fa, 0 0 25px #3b82f6; }
+    }
+
+    .script-name {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #ffffff;
+    }
+
+    .dl-btn {
+      background: #1e3a5f;
+      border: 1px solid #3b82f6;
+      border-radius: 40px;
+      padding: 10px 24px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.15s;
+      box-shadow: 0 4px 0 #0a121c;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-10px);
+      pointer-events: none;
+    }
+
+    .dl-btn.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    .dl-btn:active {
+      animation: clickFlash 0.15s;
+    }
+
+    .dl-btn:hover {
+      background: #2b5580;
+      box-shadow: 0 6px 0 #0a121c, 0 0 15px #3b82f6;
+      transform: translateY(-2px);
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+    }
+
+    .triple-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .feature-card {
+      background: rgba(12, 25, 42, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid #1e3a5f;
+      border-radius: 22px;
+      padding: 20px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 6px 0 #0a121c;
+    }
+
+    .feature-card:active {
+      animation: clickFlash 0.15s;
+    }
+
+    .feature-card i {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-card span {
+      font-weight: 600;
+      font-size: 1rem;
+      display: block;
+    }
+
+    .feature-card:hover {
+      background: #1a324b;
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 0 #0a121c, 0 0 15px #3b82f6;
+    }
+
+    .card-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .card-content.expanded {
+      max-height: 300px;
+    }
+
+    .action-btn {
+      background: #1e3a5f;
+      border: 1px solid #3b82f6;
+      border-radius: 30px;
+      padding: 10px 16px;
+      margin-top: 6px;
+      color: white;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 3px 0 #0a121c;
+      transition: 0.15s;
+      width: 100%;
+      max-width: 140px;
+    }
+
+    .action-btn i {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .action-btn:active {
+      animation: clickFlash 0.15s;
+    }
+
+    .action-btn:hover {
+      background: #2b5580;
+      box-shadow: 0 5px 0 #0a121c, 0 0 12px #3b82f6;
+      transform: translateY(-2px);
+    }
+
+    .video-link {
+      background: #1e2f42;
+      border-radius: 30px;
+      padding: 10px 16px;
+      text-decoration: none;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid #ff3b3b;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: 0.2s;
+      width: 100%;
+      max-width: 140px;
+      box-shadow: 0 3px 0 #0a121c;
+    }
+
+    .video-link i {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .video-link:hover {
+      background: #2a4058;
+      box-shadow: 0 5px 0 #0a121c, 0 0 15px #ff3b3b;
+      transform: translateY(-2px);
+    }
+
+    .links-panel {
+      background: rgba(12, 25, 42, 0.75);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
+      padding: 28px 20px;
+      border: 1px solid #1e3a5f;
+      box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .links-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #b0d0ff;
+      margin-bottom: 18px;
+    }
+
+    .icon-cluster {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+    }
+
+    .social-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      text-decoration: none;
+      transition: 0.2s;
+      box-shadow: 0 6px 0 #0a121c;
+    }
+
+    .social-icon:active {
+      animation: clickFlash 0.15s;
+    }
+
+    .social-icon.telegram { background: #14283f; border: 2px solid #26A5E4; color: #26A5E4; }
+    .social-icon.whatsapp { background: #14283f; border: 2px solid #25D366; color: #25D366; }
+    .social-icon.owner { background: #14283f; border: 2px solid #FBBF24; color: #FBBF24; }
+
+    .social-icon:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 0 #0a121c, 0 0 20px currentColor;
+    }
+
+    .disclaimer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.75rem;
+      opacity: 0.65;
+      padding: 8px 20px;
+      border-radius: 40px;
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: blur(4px);
+      border: 1px solid #1e3a5f;
+    }
+
+    /* ---------- OVERLAY PLEIN ÉCRAN AVEC ZOOM RÉDUIT ---------- */
+    .fullscreen-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0c121c;
+      z-index: 1000;
+      display: none;
+      overflow: hidden;
+    }
+
+    .fullscreen-overlay.active {
+      display: block;
+    }
+
+    /* Conteneur avec scale pour effet pincé */
+    .iframe-scale-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay-iframe {
+      width: 105.3%; /* compenser le scale pour éviter les marges blanches */
+      height: 105.3%;
+      border: none;
+      transform: scale(0.95);
+      transform-origin: center center;
+    }
+
+    .close-overlay-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: #1e2f42;
+      border: 1px solid #3b82f6;
+      border-radius: 30px;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 3px 0 #0a121c;
+      transition: 0.15s;
+      z-index: 1001;
+      line-height: 1;
+    }
+
+    .close-overlay-btn:hover {
+      background: #2b5580;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 #0a121c, 0 0 12px #3b82f6;
+    }
+
+    .close-overlay-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #0a121c;
+    }
+
+    @media (max-width: 700px) {
+      .bottom-grid { grid-template-columns: 1fr; }
+      .triple-cards { grid-template-columns: 1fr; }
+      .script-item { flex-wrap: wrap; }
+      .dl-btn { margin-left: 0; margin-top: 10px; width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="main-container">
+  <div class="header">
+    <div class="logo">
+      <i class="fas fa-skull"></i>
+      <span>LORD AZIZ · BAN TOOL</span>
+    </div>
+    <div class="status">
+      <i class="fas fa-circle" style="color: #ff4444;"></i>
+      <i class="fas fa-circle" style="color: #ffaa00;"></i>
+      <span>server · v4.0</span>
+      <i class="fas fa-bolt"></i>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><i class="fas fa-skull"></i> SUPPORT <i class="fas fa-skull"></i></h2>
+    <div class="scripts-list" id="scriptsList"></div>
+  </div>
+
+  <div class="bottom-grid">
+    <div class="triple-cards">
+      <div class="feature-card" id="fakeChatCard">
+        <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+        <span>FAKE CHAT</span>
+        <div class="card-content">
+          <button class="action-btn" data-url="https://www.mediafire.com/file/cx50ei5dsfqleds/HAD10WhatsApp_2.26.7.74.apk/file">
+            <i class="fas fa-download"></i> Télécharger
+          </button>
+        </div>
+      </div>
+      <div class="feature-card" id="howToUseCard">
+        <i class="fab fa-youtube" style="color:#ff3b3b;"></i>
+        <span>HOW TO USE</span>
+        <div class="card-content">
+          <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="video-link">
+            <i class="fab fa-youtube"></i> Tutoriel
+          </a>
+        </div>
+      </div>
+      <div class="feature-card" id="checkBanCard">
+        <i class="fas fa-gavel" style="color:#fbbf24;"></i>
+        <span>CHECK BAN</span>
+        <div class="card-content"></div>
+      </div>
+    </div>
+
+    <div class="links-panel">
+      <div class="links-title">LIENS DIRECTS</div>
+      <div class="icon-cluster">
+        <a href="https://whatsapp.com/channel/0029VbBidXg6BIEm6AM3FA0K" target="_blank" class="social-icon whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://t.me/xizlegion" target="_blank" class="social-icon telegram">
+          <i class="fab fa-telegram-plane"></i>
+        </a>
+        <a href="https://t.me/LORD_X_AZIZ" target="_blank" class="social-icon owner">
+          <i class="fas fa-crown"></i>
+        </a>
+      </div>
+      <p style="font-size:0.85rem; opacity:0.7; margin-top:18px;">Telegram · WhatsApp · Owner</p>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Disclaimer: This tool is for educational purposes only. We do not guarantee the banning of any account and are not responsible for any consequences that may arise from using this service. Use at your own risk.
+  </div>
+</div>
+
+<!-- OVERLAY PLEIN ÉCRAN AVEC ZOOM RÉDUIT -->
+<div class="fullscreen-overlay" id="checkBanOverlay">
+  <div class="iframe-scale-wrapper">
+    <iframe class="overlay-iframe" id="checkBanIframe" src="about:blank" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+  </div>
+  <div class="close-overlay-btn" id="closeOverlayBtn">×</div>
+</div>
+
+<script>
+  (function(){
+    // SCRIPTS 1-4
+    const scriptsData = [
+      { name: 'SCRIPT 1', url: 'https://www.mediafire.com/file/gbz3q8im3yc2oa4/AZIZ_SCRIPT_1/file' },
+      { name: 'SCRIPT 2', url: 'https://www.mediafire.com/file/993pitmtcn6mg8a/AZIZ_SCRIPT_2/file' },
+      { name: 'SCRIPT 3', url: 'https://www.mediafire.com/file/wtoz33j38nnmddp/AZIZ_SCRIPT_3/file' },
+      { name: 'SCRIPT 4', url: 'https://www.mediafire.com/file/p4qnjqnpgqccc5h/AZIZ_SCRIPT_4/file' }
+    ];
+
+    const listContainer = document.getElementById('scriptsList');
+    let activeDownloadBtn = null;
+
+    scriptsData.forEach(script => {
+      const row = document.createElement('div');
+      row.className = 'script-item';
+      row.innerHTML = `
+        <div class="script-left">
+          <div class="script-icon"><i class="fas fa-skull"></i></div>
+          <span class="script-name">${script.name}</span>
+        </div>
+      `;
+      const dlBtn = document.createElement('button');
+      dlBtn.className = 'dl-btn';
+      dlBtn.innerHTML = '<i class="fas fa-download"></i> Télécharger';
+      dlBtn.dataset.url = script.url;
+
+      row.addEventListener('click', (e) => {
+        if (e.target.closest('.dl-btn')) return;
+        if (activeDownloadBtn && activeDownloadBtn !== dlBtn) activeDownloadBtn.classList.remove('visible');
+        dlBtn.classList.toggle('visible');
+        activeDownloadBtn = dlBtn.classList.contains('visible') ? dlBtn : null;
+      });
+
+      dlBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.open(dlBtn.dataset.url, '_blank');
+        dlBtn.classList.remove('visible');
+        activeDownloadBtn = null;
+      });
+
+      row.appendChild(dlBtn);
+      listContainer.appendChild(row);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.script-item') && activeDownloadBtn) {
+        activeDownloadBtn.classList.remove('visible');
+        activeDownloadBtn = null;
+      }
+    });
+
+    // Cartes (toggle contenu)
+    const cards = document.querySelectorAll('.feature-card');
+    cards.forEach(card => {
+      const content = card.querySelector('.card-content');
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('button') || e.target.closest('a')) return;
+        if (card.id !== 'checkBanCard') {
+          content.classList.toggle('expanded');
+        }
+      });
+    });
+
+    // Fake chat
+    document.querySelectorAll('.action-btn[data-url]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.open(btn.dataset.url, '_blank');
+      });
+    });
+
+    // ---------- CHECK BAN PLEIN ÉCRAN ----------
+    const overlay = document.getElementById('checkBanOverlay');
+    const iframe = document.getElementById('checkBanIframe');
+    const closeBtn = document.getElementById('closeOverlayBtn');
+    const checkBanCard = document.getElementById('checkBanCard');
+    let overlayActive = false;
+
+    function loadIframe() {
+      if (iframe.src === 'about:blank') {
+        iframe.src = 'https://baron0.com/Website/2.html';
+      }
+    }
+
+    checkBanCard.addEventListener('click', () => {
+      loadIframe();
+      overlay.classList.add('active');
+      overlayActive = true;
+    });
+
+    closeBtn.addEventListener('click', () => {
+      overlay.classList.remove('active');
+      overlayActive = false;
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlayActive) {
+        overlay.classList.remove('active');
+        overlayActive = false;
+      }
+    });
+
+  })();
+</script>
+</body>
+  </html>
